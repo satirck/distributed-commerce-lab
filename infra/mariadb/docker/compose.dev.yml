@@ -1,0 +1,21 @@
+name: mariadb
+
+services:
+  mariadb:
+    image: mariadb:11.8
+    container_name: infra-mariadb
+
+    environment:
+      MARIADB_DATABASE: ${MARIADB_DATABASE}
+      MARIADB_USER: ${MARIADB_USER}
+      MARIADB_PASSWORD: ${MARIADB_PASSWORD}
+      MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
+
+    ports:
+      - "${DB_PORT}:3306"
+
+    volumes:
+      - mariadb_data:/var/lib/mysql
+
+volumes:
+  mariadb_data:

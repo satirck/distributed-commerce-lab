@@ -1,0 +1,16 @@
+name: order-api
+services:
+  nginx:
+    build:
+      context: ./nginx
+    container_name: order-api-nginx-prod
+    ports:
+      - "${APP_PORT:-8001}:80"
+    depends_on:
+      - php
+
+  php:
+    build:
+      context: ./php
+    container_name: order-api-php-prod
+    working_dir: /app
