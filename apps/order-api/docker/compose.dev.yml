@@ -10,6 +10,8 @@ services:
       - ../src:/app
     depends_on:
       - php
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
   php:
     build:
@@ -18,3 +20,5 @@ services:
     working_dir: /app
     volumes:
       - ../src:/app
+    environment:
+      PHP_IDE_CONFIG: "serverName=order-api"
